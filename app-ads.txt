@@ -2,6 +2,7 @@
 OWNERDOMAIN=metiscoda.com
 ironsrc.com, 244084, Direct
 unity.com, 1305112, DIRECT, 96cabb5fbdde37a7
+google.com, pub-1082263685898613, DIRECT, f08c47fec0942fa0
 loopme.com, 9621, RESELLER, 6c8d5f95897a5a3b
 adcolony.com, 0a0f72cd66122f31, RESELLER, 1ad675c9de6b5176
 pokkt.com, 6246, RESELLER, c45702d9311e25fd
