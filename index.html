@@ -4,13 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metiscoda LLC - Addictive Mobile Games</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Add if using custom CSS -->
     <meta name="description" content="Metiscoda LLC: Indie studio crafting hypercasual and puzzle mobile games for iOS and Android. Discover Sudden Turn, Potion Perplexion, and Linky Words!">
     <!-- Open Graph for social shares -->
     <meta property="og:title" content="Metiscoda LLC - Addictive Mobile Games">
     <meta property="og:description" content="Tap into fun with our quick-play games.">
     <meta property="og:image" content="https://metiscoda.com/games/hero-image.png"> <!-- Upload a logo/hero image -->
     <meta property="og:url" content="https://metiscoda.com">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .cta {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .cta:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+        .games-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .games-grid h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .game-card {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .game-card img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .features {
+            margin: 15px 0;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            margin: 8px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+        .features li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .links {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .links a {
+            padding: 8px 15px;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .links a:hover {
+            background: white;
+        }
+        #about {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+        }
+        .socials {
+            margin-top: 10px;
+        }
+        .socials a {
+            margin: 0 10px;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .links {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -48,7 +208,6 @@
                 </div>
                 <div class="links">
                     <a href="https://www.metiscoda.com/sudden-turn/" target="_blank">Game Page</a>
-                    <!-- App Store not available yet -->
                     <a href="https://play.google.com/store/apps/details?id=com.metiscoda.suddenturn" target="_blank">Google Play</a>
                 </div>
             </div>
@@ -67,7 +226,6 @@
                 </div>
                 <div class="links">
                     <a href="https://www.metiscoda.com/potion-perplexion/" target="_blank">Game Page</a>
-                    <!-- App Store not available yet -->
                     <a href="https://play.google.com/store/apps/details?id=com.metiscoda.potionperplexion" target="_blank">Google Play</a>
                 </div>
             </div>
@@ -91,6 +249,7 @@
                 </div>
             </div>
         </div>
+        <hr>
     </section>
 
     <section id="about">
@@ -107,6 +266,16 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script> <!-- For smooth scrolling, etc. -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
