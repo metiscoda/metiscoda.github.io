@@ -11,11 +11,14 @@
     <meta property="og:image" content="https://metiscoda.com/games/hero-image.png"> <!-- Upload a logo/hero image -->
     <meta property="og:url" content="https://metiscoda.com">
     <style>
+        /* --- 1. Global Reset & Font --- */
         body {
-            font-family: Arial, sans-serif;
+            background-color: #f0f4f9; /* Light background for contrast */
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Nunito', sans-serif;
             line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
             color: #333;
         }
         h1, h2, h3 {
@@ -35,6 +38,9 @@
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .logo {
             font-size: 1.5em;
@@ -50,6 +56,9 @@
         .hero {
             text-align: center;
             margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .hero h1 {
             font-size: 2.5em;
@@ -71,6 +80,7 @@
             background-color: #2980b9;
             text-decoration: none;
         }
+        /* --- Games Grid --- */
         .games-grid {
             max-width: 1200px;
             margin: 0 auto;
@@ -79,59 +89,144 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        .grid {
+        .games-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 40px;
         }
+        /* --- 2. Card Container Styling --- */
         .game-card {
-            background: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .game-card img {
-            width: 100%;
-            height: auto;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-        .features {
-            margin: 15px 0;
-        }
-        .features ul {
-            list-style: none;
-            padding: 0;
-        }
-        .features li {
-            margin: 8px 0;
-            padding-left: 15px;
-            position: relative;
-        }
-        .features li:before {
-            content: "•";
-            color: #3498db;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        .links {
+            /* Dimensions & Layout */
+            width: 100%; /* Full width in grid */
+            border-radius: 20px;
+            overflow: hidden; /* Keeps children within rounded borders */
             display: flex;
-            justify-content: space-around;
-            gap: 10px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            text-decoration: none; /* Remove underline from link */
+            
+            /* Aesthetics */
+            background-color: #ffffff; /* Card background */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle initial shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
+            cursor: pointer;
         }
-        .links a {
-            padding: 8px 15px;
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            white-space: nowrap;
+
+        /* --- 3. Card Hover Effect (The Lift!) --- */
+        .game-card:hover {
+            transform: translateY(-8px); /* Lifts the card */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Deeper shadow for the lift */
         }
-        .links a:hover {
-            background: white;
+
+        /* --- 4. Image Section Styling --- */
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            /* This height sets the visual cutoff point for the art */
+            height: 350px; 
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            overflow: hidden;
+            background-color: #e6f0ff; /* Fallback color */
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers the container without distortion */
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover .card-image-container img {
+            transform: scale(1.03); /* Subtle zoom on image when hovering the card */
+        }
+
+        /* --- 5. Overlays (Tagline and Rating) --- */
+        .tagline-overlay {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+            color: #444;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .rating-overlay {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            border: 2px solid #ffcc00; /* Gold border */
+        }
+
+        .rating-overlay .star {
+            color: #ffcc00; /* Gold star color */
+            margin-right: 4px;
+        }
+
+        /* --- 6. Content Section Styling --- */
+        .card-content {
+            background-color: #f7f9fc; /* Light blue/grey bottom section */
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #334;
+            margin: 0 0 10px 0;
+        }
+
+        /* --- 7. Tags Styling --- */
+        .tags {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: #5d9cec; /* Tag text color */
+            background-color: #e3f2ff; /* Light blue background for tags */
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        /* --- 8. CTA Link Styling --- */
+        .cta-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff; /* White button background */
+            color: #5d9cec; /* Blue text color */
+            border: 2px solid #5d9cec;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .game-card:hover .cta-link {
+            background-color: #5d9cec; /* Blue background on hover */
+            color: #ffffff; /* White text on hover */
         }
         #about {
             text-align: center;
@@ -140,6 +235,9 @@
             background: white;
             border: 1px solid #ddd;
             border-radius: 4px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         footer {
             text-align: center;
@@ -163,13 +261,12 @@
                 flex-direction: column;
                 gap: 10px;
             }
-            .grid {
+            .games-container {
                 grid-template-columns: 1fr;
             }
-            .links {
-                flex-direction: column;
-            }
         }
+        /* Fallback for Nunito font */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
     </style>
 </head>
 <body>
@@ -191,61 +288,64 @@
 
     <section id="games" class="games-grid">
         <h2>Our Games</h2>
-        <div class="grid">
-            <!-- Sudden Turn -->
+        <div class="games-container">
+            <!-- Sudden Turn Card -->
             <div class="game-card">
-                <img src="games/sudden-turn-screenshot.png" alt="Sudden Turn Gameplay">
-                <h3>Sudden Turn</h3>
-                <p>Drive your car along and tap to make a sudden turn in this hyper casual game.</p>
-                <div class="features">
-                    <ul>
-                        <li>Tap to turn the car at the right moment</li>
-                        <li>See how far you can go without falling off</li>
-                        <li>Collect gems along the way</li>
-                        <li>Share high scores with friends</li>
-                        <li>Unlock new vehicles like a tractor</li>
-                    </ul>
+                <div class="card-image-container">
+                    <img src="games/sudden-turn-screenshot.png" alt="Sudden Turn Gameplay">
+                    <div class="tagline-overlay">Hypercasual Tap Racer</div>
+                    <div class="rating-overlay">
+                        <span class="star">★</span> 4.5
+                    </div>
                 </div>
-                <div class="links">
-                    <a href="https://www.metiscoda.com/sudden-turn/" target="_blank">Game Page</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.metiscoda.suddenturn" target="_blank">Google Play</a>
+                <div class="card-content">
+                    <h3>Sudden Turn</h3>
+                    <div class="tags">
+                        <span class="tag">#Hypercasual</span>
+                        <span class="tag">#Racing</span>
+                        <span class="tag">#Addictive</span>
+                    </div>
+                    <a href="https://www.metiscoda.com/sudden-turn/" class="cta-link">View Game Details →</a>
                 </div>
             </div>
 
-            <!-- Potion Perplexion -->
+            <!-- Potion Perplexion Card -->
             <div class="game-card">
-                <img src="games/potion-perplexion-screenshot.png" alt="Potion Perplexion Gameplay">
-                <h3>Potion Perplexion</h3>
-                <p>Sort the potions in their bottles by their color, with one color per bottle, and the option to skip levels by watching an ad.</p>
-                <div class="features">
-                    <ul>
-                        <li>Puzzle gameplay to sort potions</li>
-                        <li>One color per bottle</li>
-                        <li>Skip tough levels with ads</li>
-                    </ul>
+                <div class="card-image-container">
+                    <img src="games/potion-perplexion-screenshot.png" alt="Potion Perplexion Gameplay">
+                    <div class="tagline-overlay">Color-Sorting Puzzle</div>
+                    <div class="rating-overlay">
+                        <span class="star">★</span> 4.7
+                    </div>
                 </div>
-                <div class="links">
-                    <a href="https://www.metiscoda.com/potion-perplexion/" target="_blank">Game Page</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.metiscoda.potionperplexion" target="_blank">Google Play</a>
+                <div class="card-content">
+                    <h3>Potion Perplexion</h3>
+                    <div class="tags">
+                        <span class="tag">#Puzzle</span>
+                        <span class="tag">#Sorting</span>
+                        <span class="tag">#Relaxing</span>
+                    </div>
+                    <a href="https://www.metiscoda.com/potion-perplexion/" class="cta-link">View Game Details →</a>
                 </div>
             </div>
 
-            <!-- Linky Words -->
+            <!-- Linky Words Card -->
             <div class="game-card">
-                <img src="games/linky-words-screenshot.png" alt="Linky Words Gameplay">
-                <h3>Linky Words</h3>
-                <p>Link letters together to form words.</p>
-                <div class="features">
-                    <ul>
-                        <li>Link adjacent letters to form category words</li>
-                        <li>Levels get harder with more letters</li>
-                        <li>Use hints to reveal letters if stuck</li>
-                    </ul>
+                <div class="card-image-container">
+                    <img src="games/linky-words-screenshot.png" alt="Linky Words Gameplay">
+                    <div class="tagline-overlay">Word-Linking Challenge</div>
+                    <div class="rating-overlay">
+                        <span class="star">★</span> 4.8
+                    </div>
                 </div>
-                <div class="links">
-                    <a href="https://www.metiscoda.com/linky-words/" target="_blank">Game Page</a>
-                    <a href="https://apps.apple.com/us/app/linky-words-word-puzzle-game/id6476451925" target="_blank">App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.metiscoda.linkletter" target="_blank">Google Play</a>
+                <div class="card-content">
+                    <h3>Linky Words</h3>
+                    <div class="tags">
+                        <span class="tag">#WordPuzzle</span>
+                        <span class="tag">#BrainTeaser</span>
+                        <span class="tag">#Educational</span>
+                    </div>
+                    <a href="https://www.metiscoda.com/linky-words/" class="cta-link">View Game Details →</a>
                 </div>
             </div>
         </div>
