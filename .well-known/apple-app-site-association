@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "QH6HCFRU24.com.metiscoda.linkletter",
+        "paths": ["/linky-words/*"],
+        "appIDs": ["QH6HCFRU24.com.metiscoda.linkletter"],
+        "components": [
+          {
+            "/": "/linky-words/*",
+            "comment": "Linky Words - daily share links carry ?d=YYYY-MM-DD"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.metiscoda.linkletter",
+      "sha256_cert_fingerprints":
+        ["8D:3F:A2:26:D7:32:1F:0D:91:97:50:B7:EF:E5:E0:C7:09:77:F3:CE:96:0A:DA:C7:85:C8:1A:F8:BC:30:1B:40"]
+    }
+  }
+]
